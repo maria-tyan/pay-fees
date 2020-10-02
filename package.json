@@ -1,0 +1,38 @@
+{
+  "name": "pay-fees",
+  "version": "1.0.0",
+  "description": "Node.js App for calculation of fees",
+  "main": "app.js",
+  "scripts": {
+    "start": "npm app.js",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maria-tyan/pay-fees.git"
+  },
+  "keywords": [
+    "nodejs",
+    "node",
+    "javascript"
+  ],
+  "author": "Maria Efremova",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/maria-tyan/pay-fees/issues"
+  },
+  "homepage": "https://github.com/maria-tyan/pay-fees#readme",
+  "dependencies": {
+    "fs": "0.0.1-security"
+  },
+  "devDependencies": {
+    "eslint": "^7.2.0",
+    "eslint-config-airbnb": "^18.2.0",
+    "eslint-plugin-import": "^2.21.2",
+    "eslint-plugin-jsx-a11y": "^6.3.0",
+    "eslint-plugin-react": "^7.20.0",
+    "eslint-plugin-react-hooks": "^4.0.0",
+    "prettier": "^2.1.2",
+    "jest": "^26.4.2"
+  }
+}
