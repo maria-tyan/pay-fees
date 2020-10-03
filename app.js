@@ -1,11 +1,21 @@
-const fs = require('fs')
+const jsonData = require('./dataGetters/readData');
+const cashIn = require('./calculations/cashIn');
+const cashOut = require('./calculations/cashOut');
 
-const jsonData = (fileName) => {
-  try {
-    return JSON.parse(fs.readFileSync(`./${fileName}.json`));
-  } catch (err) {
-    console.log(err.message);
+const fileName = 'input.json';
+const data = jsonData(`./${fileName}`);
+console.log(data);
+
+const result = data.map(transaction => {
+  switch(transaction.type) {
+    case 'cash_in':
+      return cashIn(transaction);
+    case 'cash_out':
+      return cashOut(transaction);
+    default:
+      return null;
   }
-};
+});
 
-console.log(jsonData('input'))
+console.log(...result);
+

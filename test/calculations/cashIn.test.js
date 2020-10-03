@@ -5,6 +5,10 @@ describe('Fees calculation for Cash In', () => {
     expect(cashIn(1000000.00)).toBeLessThanOrEqual(5);
   });
 
+  test('It must be no more than 5.00 EUR', () => {
+    expect(cashIn(1000000.00)).toBe(5);
+  });
+
   test('It must be 0.03%', () => {
     expect(cashIn(200.00)).toBeCloseTo(0.15);
   });

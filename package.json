@@ -4,7 +4,7 @@
   "description": "Node.js App for calculation of fees",
   "main": "app.js",
   "scripts": {
-    "start": "npm app.js",
+    "start": "node app.js",
     "test": "jest"
   },
   "repository": {

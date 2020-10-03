@@ -1,5 +1,5 @@
 function rounding(number) {
-  console.log(number);
-  return Math.ceil(number);
+  // rounding to upper bound
+  return (Math.ceil(number * 100) / 100).toFixed(2);
 }
 module.exports = rounding;
