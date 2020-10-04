@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/maria-tyan/pay-fees#readme",
   "dependencies": {
+    "date-fns": "^2.16.1",
     "fs": "0.0.1-security"
   },
   "devDependencies": {
