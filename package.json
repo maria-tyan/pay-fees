@@ -26,6 +26,20 @@
     "date-fns": "^2.16.1",
     "fs": "0.0.1-security"
   },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true,
+      "es6": true
+    },
+    "parserOptions": {
+      "ecmaVersion": 6
+    },
+    "extends": "airbnb",
+    "rules": {
+      "linebreak-style": 0
+    }
+  },
   "devDependencies": {
     "eslint": "^7.2.0",
     "eslint-config-airbnb": "^18.2.0",
