@@ -1,6 +1,6 @@
 const rounding = require('./rounding');
 
-function cashIn({ operation }) {
+async function cashIn({ operation }) {
   const fullFee = operation.amount * 0.03 / 100;
   return rounding((fullFee > 5) ? 5.00 : fullFee);
 }

@@ -1,5 +1,6 @@
 const { getISOWeek, getYear } = require('date-fns');
 const rounding = require('./rounding');
+const fetchData = require('../dataGetters/fetchData');
 
 const weekHashData = [];
 
@@ -47,7 +48,9 @@ function cashOutNatural(transaction) {
   return rounding(0);
 }
 
-function cashOut(transaction) {
+async function cashOut(transaction) {
+  const feeConfiguration = await fetchData('http://private-38e18c-uzduotis.apiary-mock.com/config/cash-out/natural');
+  // console.log('got result', feeConfiguration);
   switch (transaction.user_type) {
     case 'juridical':
       return cashOutJuridical(transaction);
