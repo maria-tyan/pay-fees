@@ -7,16 +7,17 @@ function getFee(transaction, feeConfiguration) {
 
   // if MAX limit exists for this operation
   if (feeConfiguration.max) {
-    fullFee = (fullFee > feeConfiguration.max.amount) ? 5.00 : fullFee;
+    fullFee = (fullFee > feeConfiguration.max.amount) ? feeConfiguration.max.amount : fullFee;
   }
   // if MIN limit exists for this operation
   if (feeConfiguration.min) {
-    fullFee = (fullFee > feeConfiguration.min.amount) ? fullFee : 0.50;
+    fullFee = (fullFee > feeConfiguration.min.amount) ? fullFee : feeConfiguration.min.amount;
   }
   // if WEEK_LIMIT exists for this operation
   if (feeConfiguration.week_limit) {
     fullFee = calculateWeekLimit(transaction, feeConfiguration);
   }
+  // rounding to upper bound
   return rounding(fullFee);
 }
 

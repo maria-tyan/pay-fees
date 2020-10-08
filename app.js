@@ -1,29 +1,31 @@
 const jsonData = require('./dataGetters/readData');
-const cashIn = require('./calculations/cashIn');
-const cashOut = require('./calculations/cashOut');
+const fetchData = require('./dataGetters/fetchData');
+const getFee = require('./calculations/getFee');
 
-const fileName = 'input.json';
+let fileName = process.argv.slice(2)[0];
+if (!fileName) {
+  fileName = 'input.json';
+}
+const hostName = 'http://private-38e18c-uzduotis.apiary-mock.com';
+
 const data = jsonData(`./${fileName}`);
 
 (async () => {
-  
-  let result = []
   for (let i = 0; i < data.length; i++) {
-    let transaction = data[i]
-    let resultI = null
-    switch (transaction.type) {
-      case 'cash_in':
-        resultI = await cashIn(transaction);
-        break;
-      case 'cash_out':
-        resultI = await cashOut(transaction);
-        break;
-      default:
-        (null);
+    const transaction = data[i];
+
+    // API URLs dictionary
+    const urlAPIs = {
+      'cash_in': `${hostName}/config/cash-in`,
+      'cash_out': `${hostName}/config/cash-out/${transaction.user_type}`,
     }
-    result.push(resultI)
+
+    // fetch data from API and calculate fee
+    const resultI = await fetchData(urlAPIs[transaction.type])
+      .then((feeConfiguration) => {
+        return getFee(transaction, feeConfiguration);
+      });
+
+    console.log(resultI);
   }
-
-  console.log(...result);
-
 })();

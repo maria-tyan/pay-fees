@@ -3,11 +3,13 @@ const { getISOWeek, getYear } = require('date-fns');
 const weekHashData = [];
 
 function getHash(transaction) {
+  // returns hash string for the current transaction
   const date = new Date(transaction.date);
   return `${getISOWeek(date)}_${getYear(date)}_${transaction.user_id}`;
 }
 
 function addTransactionToHashArray(transaction) {
+  // adds new object for each transaction
   weekHashData.push({
     hash: getHash(transaction),
     amount: transaction.operation.amount,
@@ -23,9 +25,10 @@ function calculateWeekLimit(transaction, feeConfiguration) {
     .filter((hashItem) => hashItem.hash === getHash(transaction))
     .reduce(
       (a, b) => a + b.amount,
-      0
+      0,
     );
-  // if MAX per week exceeded 
+
+  // if MAX per week exceeded
   if (weekSum > feeConfiguration.week_limit.amount) {
     let exceededAmount = 0;
     // calculate current exceeded amount
@@ -38,6 +41,7 @@ function calculateWeekLimit(transaction, feeConfiguration) {
     const fullFee = exceededAmount * feeConfiguration.percents * 0.01;
     return fullFee;
   }
+
   return 0;
 }
 
