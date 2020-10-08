@@ -7,7 +7,7 @@ npm install
 
 ### To run the application use
 ```
-npm start &{input file name}
+npm start &{input file name}.json
 ```
 
 ### To run tests
