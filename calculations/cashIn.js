@@ -1,8 +1,12 @@
-const rounding = require('./rounding');
+const getFee = require('./getFee');
+const fetchData = require('../dataGetters/fetchData');
 
-async function cashIn({ operation }) {
-  const fullFee = operation.amount * 0.03 / 100;
-  return rounding((fullFee > 5) ? 5.00 : fullFee);
+async function cashIn(transaction) {
+  // fetch data for current transaction
+  return fetchData(`http://private-38e18c-uzduotis.apiary-mock.com/config/cash-in`)
+    .then((feeConfiguration) => {
+      return getFee(transaction, feeConfiguration);
+    });
 }
-
 module.exports = cashIn;
+

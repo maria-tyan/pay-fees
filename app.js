@@ -1,25 +1,29 @@
 const jsonData = require('./dataGetters/readData');
-const fetchData = require('./dataGetters/fetchData');
 const cashIn = require('./calculations/cashIn');
 const cashOut = require('./calculations/cashOut');
 
 const fileName = 'input.json';
 const data = jsonData(`./${fileName}`);
 
-const result = data
-  .map(async (transaction) => {
+(async () => {
+  
+  let result = []
+  for (let i = 0; i < data.length; i++) {
+    let transaction = data[i]
+    let resultI = null
     switch (transaction.type) {
       case 'cash_in':
-        return await cashIn(transaction);
+        resultI = await cashIn(transaction);
+        break;
       case 'cash_out':
-        return await cashOut(transaction);
+        resultI = await cashOut(transaction);
+        break;
       default:
-        return null;
+        (null);
     }
-  });
+    result.push(resultI)
+  }
 
-Promise.all(result).then((result) => {
   console.log(...result);
-})
 
-// console.log(fetchData('http://private-38e18c-uzduotis.apiary-mock.com/config/cash-out/natural'));
+})();

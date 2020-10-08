@@ -1,6 +1,6 @@
 const fetch = require('node-fetch');
 
-async function fetchData(fetchUrl) {
+function fetchData(fetchUrl) {
   // fetch request with error handling
   return fetch(fetchUrl)
     .then(res => res.json())
