@@ -20,7 +20,7 @@ Task
 ====
 
 ## Situation
-Paysera users can go to a branch to cash in and/or cash out from Paysera account. There are also commission fees for both cash in and cash out. Only supported currency is EUR.
+Users can go to a branch to cash in and/or cash out from account. There are also commission fees for both cash in and cash out. Only supported currency is EUR.
 
 ## Commission Fees
 
