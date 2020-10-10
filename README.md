@@ -7,7 +7,7 @@ npm install
 
 ### To run the application use
 ```
-npm start &{input file name}.json
+npm start __input_filename.json__
 ```
 
 ### To run tests
@@ -15,7 +15,7 @@ npm start &{input file name}.json
 npm test
 ```
 
-====
+
 Task
 ====
 
