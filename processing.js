@@ -17,10 +17,8 @@ async function processing(data) {
       }
   
       // fetch data from API and calculate fee
-      const resultI = await fetchData(urlAPIs[transaction.type])
-        .then((feeConfiguration) => {
-          return getFee(transaction, feeConfiguration);
-        });
+      const feeConfiguration = await fetchData(urlAPIs[transaction.type]);
+      const resultI = getFee(transaction, feeConfiguration);
   
       console.log(resultI);
       result.push(resultI);
